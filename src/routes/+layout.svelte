@@ -19,12 +19,6 @@
 				condition: 'loggedIn'
 			},
 			{
-				title: 'Dishes',
-				path: '/dishes',
-				icon: 'Dish',
-				condition: 'isAdmin'
-			},
-			{
 				title: 'Order History',
 				path: '/orderHistory',
 				icon: 'OrderHistory',

@@ -6,8 +6,9 @@
 {#if $user}
 	<h1>Hello, {$user.name}!</h1>
 	{#if $user.isAdmin}
-		<h3>You are Admin</h3>
+		<h3>You are Admin <a class="btn btn-primary" href="/dishes">Add Dishes</a></h3>
 	{/if}
 {:else}
 	<h1>Please log in</h1>
 {/if}
+
