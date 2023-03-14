@@ -2,6 +2,7 @@
 <script lang="ts">
     import type {NavSettings} from './NavSettings';
     export let navsettings: NavSettings
+    import {user} from '$lib/stores/userStore';
 </script>
 
 
@@ -14,11 +15,20 @@
             <ul class="navbar-nav me-auto">
                 {#each navsettings.routes as route}
                     <li class="nav-item rainbow">
+                        {#if $user}
                         <a 
                             class="nav-link text-white font-wight-bold font-size-12"
                             data-sveltekit-preload-data="hover" href="{route.path}"
                             ><div class="anim">{route.title}</div></a
                         >
+                        {:else}
+                        <a 
+                            class="nav-link text-white font-wight-bold font-size-12"
+                            data-sveltekit-preload-data="hover" href="{navsettings.login_path}"
+                            ><div class="anim">{route.title}</div></a
+                        >
+                        {/if}
+                        
                     </li>
                 {/each}
             </ul>

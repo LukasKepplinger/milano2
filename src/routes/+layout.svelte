@@ -5,6 +5,7 @@
 	const navSettings: NavSettings = {
 		title: 'Milano',
 		title_path: '/',
+		login_path: '/auth/login',
 		routes: [
 			{
 				title: 'Home',
