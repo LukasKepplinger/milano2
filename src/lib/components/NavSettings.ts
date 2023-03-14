@@ -6,6 +6,7 @@ export type NavSettings = {
         title: string;
         path: string;
         icon: string;
+        condition: string;
     }[];
 }
 

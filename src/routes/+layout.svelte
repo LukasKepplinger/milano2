@@ -2,9 +2,6 @@
 	import AuthSection from '$lib/components/AuthSection.svelte';
 	import Navmenu from '$lib/components/Navmenu.svelte';
 	import type { NavSettings } from '$lib/components/NavSettings';
-	// import pb from '$lib/connections/pb';
-
-	// pb.collection('users').authWithPassword("a.b@gmail.com", "Abc.1234");
 	const navSettings: NavSettings = {
 		title: 'Milano',
 		title_path: '/',
@@ -12,28 +9,27 @@
 			{
 				title: 'Home',
 				path: '/',
-				icon: 'home'
+				icon: 'home',
+				condition: 'none'
 			},
 			{
 				title: 'Order',
 				path: '/newOrder',
-				icon: 'Order'
+				icon: 'Order',
+				condition: 'loggedIn'
 			},
 			{
 				title: 'Dishes',
 				path: '/dishes',
-				icon: 'Dish'
+				icon: 'Dish',
+				condition: 'isAdmin'
 			},
 			{
 				title: 'Order History',
 				path: '/orderHistory',
-				icon: 'OrderHistory'
-			},
-      {
-        title: 'Manage Orders',
-        path: '/manageOrders',
-        icon: 'ManageOrders'
-      }
+				icon: 'OrderHistory',
+				condition: 'loggedIn'
+			}
 		]
 	};
 </script>
