@@ -21,11 +21,9 @@
 	const getTotalDept = () => {
 		let total = 0;
 		orders.forEach((order) => {
-			console.log('order: ' + order.id);
 			if (!order.payment_received) {
 				const dish = dishes.find((dish) => dish.id == order.dish);
 				total += dish?.price;
-				console.log('upayed dish: ' + dish?.name + ' ' + dish?.price + '€');
 			}
 		});
 		totalDept = total;
@@ -33,6 +31,7 @@
 
 	getDishes();
 	getOrders();
+	
 
 	//UI
 	const getDishName = (id: string) => {
@@ -46,7 +45,13 @@
 
 	const payOrder = async (id: string) => {
 		await pb.collection('orders').update(id, { payment_received: true });
-		getOrders();
+		orders = orders.map((order) => {
+			if (order.id == id) {
+				order.payment_received = true;
+			}
+			return order;
+		});
+		getTotalDept();
 	};
 
 	const formattedDateTimeGerman = (date: string) => {
@@ -86,6 +91,7 @@
 <table class="table table-striped table-hover mb-5">
 	<thead>
 		<tr>
+			<th scope="col">Name</th>
 			<th scope="col">Dish</th>
 			<th scope="col">Date</th>
 			<th scope="col">Price</th>
@@ -96,6 +102,7 @@
 		{#each orders as order}
 			{#if !order.payment_received}
 				<tr>
+					<td>{}</td>
 					<td>{getDishName(order.dish)}</td>
 					<td>{formattedDateTimeGerman(order.date)}</td>
 					<td>{getDishPrice(order.dish)}€</td>

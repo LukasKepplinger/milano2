@@ -40,6 +40,9 @@
 				});
 			}
 		}
+		//TODO: show success message
+		//set selectedDishes to empty array
+		selectedDishes = [];
 	};
 
 	getDishes();
@@ -49,7 +52,6 @@
 
 <div class="grid">
 	{#each dishes as dish}
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div on:click={() => selectDish(dish.id)}>
 			<Dish {dish} />
 		</div>

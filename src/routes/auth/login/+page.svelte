@@ -9,16 +9,11 @@
     };
 
     const submit = async () => {
-        console.log("login");
-        console.log(login);
-
         const userData = await pb
             .collection("users")
             .authWithPassword(login.email, login.password);
 
         user.set(structuredClone(userData.record));
-
-        console.log($user);
         goto(`/`);
     };
 </script>
